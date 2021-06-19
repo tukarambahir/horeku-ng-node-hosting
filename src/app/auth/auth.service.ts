@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService implements CanActivate {
-  url = 'http://localhost:4000/user'
+  // url = 'http://localhost:4000/user'
+  url = '/user'
 
   constructor(
     private router: Router,
