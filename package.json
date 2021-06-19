@@ -42,8 +42,7 @@
     "mysql2": "^2.2.5",
     "nodemailer": "^6.5.0",
     "swagger-jsdoc": "^7.0.0-rc.4",
-    "swagger-ui-express": "^4.1.6",
-    "uuid": "^8.3.2"
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.1",
