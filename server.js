@@ -17,7 +17,6 @@ const orderRouter = require('./user/routes/order')
 const productRouter = require('./user/routes/product')
 const cartRouter = require('./user/routes/cart')
 const categoryRouter = require('./user/routes/category')
-const path = require('path/posix')
 
 const app = express()
 app.use(cors('*'))
@@ -30,7 +29,7 @@ app.use(morgan('combined'))
 // // add a middleware for getting the id from token
 // function getUserId(request, response, next) {
 
-//   if ( request.url == '/*'
+//   if ( request.url == '/'
 //       ||   request.url == '/user/signin' 
 //       || request.url == '/user/signup'
 //       || request.url == '/user/getDetails'
@@ -77,14 +76,11 @@ app.get('/', (request, response) => {
 })
 
 
-app.use(express.static(__dirname +' ./dist'));
+app.use(express.static('./dist/user-portal'));
 
-app.get('/*', (req, res) =>{
-    res.sendFile(path.join(__dirname+ 'dist/user-portal/index.html'))
-});
-
-
-app.listen( process.env.PORT || 4000)
-// app.listen( process.env.PORT || 4000, ()=>{
-//   console.log('server started on port 4000')
-// })
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/user-portal/'}),
+);
+app.listen(process.env.PORT || 4000, '0.0.0.0', () => {
+  console.log('server started on port 4000')
+})
