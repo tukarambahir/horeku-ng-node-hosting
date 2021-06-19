@@ -10,10 +10,10 @@ const uuid = require('uuid')
 const fs = require('fs')
 const path = require('path')
 const jwt = require('jsonwebtoken')
-const Prohrairesis = require('prohairesis')
+const {Prohairesis} = require('prohairesis')
 const env = require('../../env')
 
-const db = new Prohrairesis(env.CLEARDB_DATABASE_URL)
+const db = new Prohairesis(env.CLEARDB_DATABASE_URL)
 
 console.log("env = " +env)
 
