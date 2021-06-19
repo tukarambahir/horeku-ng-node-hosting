@@ -76,11 +76,11 @@ app.get('/', (request, response) => {
 })
 
 
-// app.use(express.static('./dist/user-portal'));
+app.use(express.static('./dist/user-portal/'));
 
-// app.get('/*', (req, res) =>
-//     res.sendFile('index.html', {root: 'dist/user-portal/'}),
-// );
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/user-portal/'}),
+);
 app.listen(process.env.PORT || 8080, '0.0.0.0', () => {
   console.log('server started on port 4000')
 })
