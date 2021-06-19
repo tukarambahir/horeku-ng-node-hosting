@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:4000/user'
+  // url = 'http://localhost:4000/user'
+  url = '/user'
   constructor(private router: Router,
     private httpClient: HttpClient) { }
 
