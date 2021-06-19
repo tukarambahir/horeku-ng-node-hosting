@@ -29,7 +29,7 @@ app.use(morgan('combined'))
 // add a middleware for getting the id from token
 function getUserId(request, response, next) {
 
-  if ( request.url == '/'
+  if ( request.url == '/*'
       ||   request.url == '/user/signin' 
       || request.url == '/user/signup'
       || request.url == '/user/getDetails'

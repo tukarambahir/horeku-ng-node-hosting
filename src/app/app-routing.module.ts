@@ -7,8 +7,8 @@ import { FrontSiteComponent } from './front-site/front-site.component';
 const routes: Routes = [
   // default route
 
-  { path: 'appfrontsite', component:FrontSiteComponent },
   { path: '', redirectTo: '/appfrontsite', pathMatch: 'full' },
+  { path: 'appfrontsite', component:FrontSiteComponent },
   { path: 'authentication', redirectTo: '/home', pathMatch: 'full' },
   { 
     path: 'home',
