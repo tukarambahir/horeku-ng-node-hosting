@@ -26,39 +26,39 @@ app.use(morgan('combined'))
 
 
 
-// add a middleware for getting the id from token
-function getUserId(request, response, next) {
+// // add a middleware for getting the id from token
+// function getUserId(request, response, next) {
 
-  if ( request.url == '/*'
-      ||   request.url == '/user/signin' 
-      || request.url == '/user/signup'
-      || request.url == '/user/getDetails'
-      || request.url.startsWith('/user/activate')
-      || request.url == '/logo.png'
-      || request.url.startsWith('/product/image/')
-      || request.url.startsWith('/user/forgot-password')) {
-    // do not check for token 
-    next()
-  } else {
+//   if ( request.url == '/*'
+//       ||   request.url == '/user/signin' 
+//       || request.url == '/user/signup'
+//       || request.url == '/user/getDetails'
+//       || request.url.startsWith('/user/activate')
+//       || request.url == '/logo.png'
+//       || request.url.startsWith('/product/image/')
+//       || request.url.startsWith('/user/forgot-password')) {
+//     // do not check for token 
+//     next()
+//   } else {
 
-    try {
-      const token = request.headers['token']
-      const data = jwt.verify(token, config.secret)
+//     try {
+//       const token = request.headers['token']
+//       const data = jwt.verify(token, config.secret)
 
-      // add a new key named userId with logged in user's id
-      request.userId = data['id']
+//       // add a new key named userId with logged in user's id
+//       request.userId = data['id']
 
-      // go to the actual route
-      next()
+//       // go to the actual route
+//       next()
       
-    } catch (ex) {
-      response.status(401)
-      response.send({status: 'error', error: 'protected api'})
-    }
-  }
-}
+//     } catch (ex) {
+//       response.status(401)
+//       response.send({status: 'error', error: 'protected api'})
+//     }
+//   }
+// }
 
-app.use(getUserId)
+// app.use(getUserId)
 
 // required to send the static files in the directory named images
 app.use(express.static('images/'))
