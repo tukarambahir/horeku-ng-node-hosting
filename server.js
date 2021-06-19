@@ -79,9 +79,9 @@ app.get('/', (request, response) => {
 
 app.use(express.static(__dirname +' ./dist'));
 
-app.get('/*', (req, res) =>
-    res.sendFile(path.join(__dirname+ 'dist/user-portal/index.html'),
-);
+app.get('/*', (req, res) =>{
+    res.sendFile(path.join(__dirname+ 'dist/user-portal/index.html'))
+});
 app.listen( process.env.PORT || 4000, ()=>{
   console.log('server started on port 4000')
 })
