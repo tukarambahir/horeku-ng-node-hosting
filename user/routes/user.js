@@ -1,5 +1,7 @@
 const express = require('express')
-const db = require('../../db')
+
+// const db = require('../../db')
+
 const config = require('../../config')
 const utils = require('../../utils')
 const crypto = require('crypto-js')
@@ -8,6 +10,12 @@ const uuid = require('uuid')
 const fs = require('fs')
 const path = require('path')
 const jwt = require('jsonwebtoken')
+const Prohrairesis = require('prohairesis')
+const env = require('../../env')
+
+const db = new Prohrairesis(env.CLEARDB_DATABASE_URL)
+
+console.log("env = " +env)
 
 const router = express.Router()
 
