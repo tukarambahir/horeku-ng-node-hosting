@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h2>Order Items</h2>
+    <button class="btn btn-success float-right">Place Order</button>
+</div>
+
+<div class="modal-body">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let index = index">
+        <td>{{index + 1}}</td>
+        <td>
+          <img class="product-image" src="http://localhost:4000/product/image/{{item['image']}}" alt="">
+        </td>
+        <td>{{item['title']}}</td>
+        <td>{{item['price']}}</td>
+        <th>   
+          {{item['quantity']}}
+        </th>
+        <td>{{item['totalAmount']}}</td>
+        
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="5">Price</th>
+        <th colspan="2" >{{totalAmount}}</th>
+      </tr>
+      <tr>
+        <th colspan="5">delivery charges</th>
+        <th colspan="2" >{{delivery}}</th>
+      </tr>
+      <tr>
+        <th colspan="5">Payable Amount</th>
+        <th colspan="2" >{{payableAmount}}</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+
+

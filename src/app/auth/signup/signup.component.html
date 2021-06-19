@@ -1,0 +1,32 @@
+
+<div class="box">
+    <div><img class="monkeyimg"src="https://img2.pngio.com/mailchimp-logo-mailchimp-white-icon-transparent-full-size-png-mailchimp-logo-png-2276_2382.png">
+   <br><br><br><br><span class="text-center">Get Started with your account</span>
+
+    <div class="input-container">
+    <input [(ngModel)]="Name"id="Name"type="text" required=""/>
+    <label class="color">UserName</label>		
+</div>
+
+
+<div class="input-container">		
+    <input [(ngModel)]="Email"id ="Email"type="mail" required />
+    <label class="color">E-mail</label>
+</div>
+
+
+<div class="input-container">		
+    <input [(ngModel)]="Password"id="Password"type="Password" required=""/>
+    <label class="color">Password</label>
+</div>
+
+
+<div class="input-container">		
+    <input [(ngModel)]="Phone"id="Phone"type="Phone" required=""/>
+    <label class="color">Phone</label>
+</div>
+
+   
+<button (click)="onSignup()"type="button" class="btn">submit</button><span style="margin-left: 10px;" class="color">Already have account? <a class="link Signin"routerLink="/auth/login">Signin</a></span>
+
+</div>
