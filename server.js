@@ -26,10 +26,10 @@ app.use(bodyParser.json())
 app.use(morgan('combined'))
 
 
-// default route
-app.get('/', (request, response) => {
-  response.send('welcome to my application')
-})
+// // default route
+// app.get('/', (request, response) => {
+//   response.send('welcome to my application')
+// })
 
 
 // add the routes
@@ -39,8 +39,8 @@ app.use('/product', productRouter)
 app.use('/cart', cartRouter)
 app.use('/category', categoryRouter)
 
-app.listen(process.env.PORT || 8080,()=>{
-
-})
-
+app.use(express.static(__dirname + '/dist/medical-site-for-delivery'));
+// Start the app by listening on the default
+// Heroku port
+app.listen(process.env.PORT || 8080);
 
