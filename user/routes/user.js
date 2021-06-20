@@ -72,24 +72,26 @@ router.get('/forgot-password/:email', (request, response) => {
 router.post('/signup', (request, response) => {
   const {firstName, lastName, email, password} = request.body
   
-  const activationToken = uuid.v4()
-  const activationLink = `http://localhost:4000/user/activate/${activationToken}`
+  // const activationToken = uuid.v4()
+  // const activationLink = `http://localhost:4000/user/activate/${activationToken}`
 
-  const htmlPath = path.join(__dirname, '/../templates/send_activation_link.html')
-  let body = '' + fs.readFileSync(htmlPath)
-  body = body.replace('firstName', firstName)
-  body = body.replace('activationLink', activationLink)
+  // const htmlPath = path.join(__dirname, '/../templates/send_activation_link.html')
+  // let body = '' + fs.readFileSync(htmlPath)
+  // body = body.replace('firstName', firstName)
+  // body = body.replace('activationLink', activationLink)
 
   const statement = `insert into user (firstName, lastName, email, password, activationToken) values (
-    '${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${activationToken}'
-  )`
+    '${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}'
+    )`
+    // '${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${activationToken}'
   db.query(statement, (error, data) => {
 
-    mailer.sendEmail(email, 'Welcome to mystore', body,  (error, info) => {
-      console.log(error)
-      console.log(info)
-      response.send(utils.createResult(error, data))
-    })
+    // mailer.sendEmail(email, 'Welcome to mystore', body,  (error, info) => {
+    //   console.log(error)
+    //   console.log(info)
+    //   response.send(utils.createResult(error, data))
+    // })
+    response.send(utils.createResult(error, data))
 
   })
 })
@@ -104,15 +106,22 @@ router.post('/signin', (request, response) => {
       response.send({status: 'error', error: 'user does not exist'})
     } else {
       const user = users[0]
-      if (user['active'] == 1) {
-        // user is an active user
-        const token = jwt.sign({id: user['id']}, config.secret)
-        response.send(utils.createResult(error, {
+
+         response.send(utils.createResult(error, {
           firstName: user['firstName'],
           lastName: user['lastName'],
           token: token,
         
         }))
+      if (user['active'] == 1) {
+      //   // user is an active user
+      //   const token = jwt.sign({id: user['id']}, config.secret)
+      //   response.send(utils.createResult(error, {
+      //     firstName: user['firstName'],
+      //     lastName: user['lastName'],
+      //     token: token,
+        
+      //   }))
       } else {
         // user is a suspended user
         response.send({status: 'error', error: 'your account is not active. please contact administrator'})
