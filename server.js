@@ -39,7 +39,9 @@ app.use('/product', productRouter)
 app.use('/cart', cartRouter)
 app.use('/category', categoryRouter)
 
-app.use(express.static(__dirname + '/dist/medical-site-for-delivery'));
+
+// Serve only the static files form the dist directory
+app.use(express.static('./dist/angular-app-heroku'));
 // Start the app by listening on the default
 // Heroku port
 app.listen(process.env.PORT || 8080);
